@@ -1,0 +1,128 @@
+{
+	"name": "docthis",
+	"displayName": "Document This",
+	"description": "Automatically generates detailed JSDoc comments in TypeScript and JavaScript files.",
+	"version": "0.3.6",
+	"publisher": "joelday",
+	"icon": "images/icon.svg",
+	"galleryBanner": {
+		"color": "#252627",
+		"theme": "dark"
+	},
+	"license": "MIT",
+	"licenseUrl": "LICENSE",
+	"engines": {
+		"vscode": "^0.10.6"
+	},
+	"categories": [
+		"Other",
+		"Snippets",
+		"Languages"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "docthis.documentThis",
+				"title": "Document This"
+			},
+			{
+				"command": "docthis.documentEverything",
+				"title": "Document Everything"
+			},
+			{
+				"command": "docthis.documentEverythingVisible",
+				"title": "Document Everything Visible"
+			},
+			{
+				"command": "docthis.traceTypeScriptSyntaxNode",
+				"title": "Trace TypeScript Syntax Node"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "docthis.documentThis",
+				"key": "ctrl+alt+d ctrl+alt+d"
+			},
+			{
+				"command": "docthis.documentEverything",
+				"key": "ctrl+alt+d ctrl+alt+e"
+			},
+			{
+				"command": "docthis.documentEverythingVisible",
+				"key": "ctrl+alt+d ctrl+alt+v"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Document This configuration",
+			"properties": {
+				"docthis.automaticForBlockComments": {
+					"type": "boolean",
+					"default": true,
+					"description": "When enabled, typing /** triggers documentation automatically."
+				},
+				"docthis.includeTypes": {
+					"type": "boolean",
+					"default": true,
+					"description": "When enabled, type information is added to comment tags."
+				},
+				"docthis.includeMemberOfOnClassMembers": {
+					"type": "boolean",
+					"default": true,
+					"description": "When enabled, memberOf information is added to comment tags on class members."
+				},
+				"docthis.includeMemberOfOnInterfaceMembers": {
+					"type": "boolean",
+					"default": true,
+					"description": "When enabled, memberOf information is added to comment tags on interface members."
+				},
+				"docthis.enableJumpToDescriptionLocation": {
+					"type": "boolean",
+					"default": true,
+					"description": "When enabled, the cursor will jump to the description location on a single comment insert."
+				},
+				"docthis.includeDescriptionTag": {
+					"type": "boolean",
+					"default": false,
+					"description": "When enabled, JSDoc comments for functions and methods will include @description."
+				},
+				"docthis.enableHungarianNotationEvaluation": {
+					"type": "boolean",
+					"default": false,
+					"description": "When enabled, hungarian notation will be used as a type hint."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"lint": "node ./node_modules/tslint/bin/tslint src/**/*.ts",
+		"compile": "npm run lint && node ./node_modules/vscode/bin/compile -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"tslint": "^3.3.0",
+		"vscode": "^0.11.18"
+	},
+	"dependencies": {
+		"openurl": "^1.1.1",
+		"serialize-error": "^2.0.0",
+		"typescript": "^1.8.10"
+	},
+	"bugs": {
+		"url": "https://github.com/joelday/vscode-docthis/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/joelday/vscode-docthis"
+	},
+	"__metadata": {
+		"id": "90a838c3-675b-4b87-b7a5-75ea88432cce",
+		"publisherId": "d4fc689c-c760-4902-af94-114f64e1100f",
+		"publisherDisplayName": "Joel Day"
+	}
+}
